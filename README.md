@@ -51,7 +51,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 
 ---
 
-[![asciicast](https://asciinema.org/a/gGtxwT35JjXwR6qv7yMmB7K53.svg)](https://asciinema.org/a/gGtxwT35JjXwR6qv7yMmB7K53)
+[![asciicast](https://asciinema.org/a/624036.svg)](https://asciinema.org/a/624036)
 
 ---
 
