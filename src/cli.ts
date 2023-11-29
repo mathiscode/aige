@@ -1,15 +1,21 @@
+#!/usr/bin/env node
+
 import { program } from 'commander'
 import { checkbox, input, select } from '@inquirer/prompts'
 import chalk from 'chalk'
 import fs from 'fs'
 
 import { Game } from './'
-import pkg from '../package.json'
 import Chat from './types/Chat'
 import Character from './types/Character'
 import GameEvent from './types/GameEvent'
 
 let chatMode: boolean | string = false
+
+let pkg = { version: '?.?.?', description: 'AI Game Engine' }
+try {
+  pkg = JSON.parse(fs.readFileSync('package.json').toString())
+} catch (err) {}
 
 program
   .name('aige')
