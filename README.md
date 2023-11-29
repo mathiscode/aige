@@ -49,6 +49,12 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 - 🧰 Track stats, scene, inventory, characters, abilities, quests, and more
 - 🤖 Powered by [OpenAI API](https://platform.openai.com/docs/overview) (planned support for additional LLMs)
 
+---
+
+[![asciicast](https://asciinema.org/a/623977.svg)](https://asciinema.org/a/623977)
+
+---
+
 ## Table of Contents <!-- omit in toc -->
 
 - [AIGE: The AI Game Engine](#aige-the-ai-game-engine)
@@ -66,7 +72,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 Just want to play some games? Try the CLI!
 
 ```sh
-OPENAI_API_KEY=sk-youropenaikey npx @aige/core
+OPENAI_API_KEY=sk-youropenaikey npx @aige/core@latest
 ```
 
 ```text
