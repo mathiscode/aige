@@ -19,7 +19,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 [![View Docs](https://img.shields.io/badge/view-docs-blue?style=for-the-badge)](https://aige.games)
 [![Made with TypeScript](https://img.shields.io/badge/made_with-typescript-blue?style=for-the-badge)](https://www.typescriptlang.org)
 
-[![Version](https://img.shields.io/github/package-json/v/mathiscode/aige?color=success)](https://www.npmjs.com/package/aige)
+[![Version](https://img.shields.io/github/package-json/v/mathiscode/aige?color=success)](https://www.npmjs.com/package/@aige/core)
 [![CircleCI](https://img.shields.io/circleci/build/github/mathiscode/aige/master)](https://app.circleci.com/pipelines/github/mathiscode/aige)
 [![Last Commit](https://img.shields.io/github/last-commit/mathiscode/aige.svg)](https://github.com/mathiscode/aige/commit/master)
 [![Open issues](https://img.shields.io/github/issues/mathiscode/aige.svg)](https://github.com/mathiscode/aige/issues)
