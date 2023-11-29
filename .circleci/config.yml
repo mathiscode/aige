@@ -10,10 +10,10 @@ jobs:
           command: npm install
       - run:
           name: Build
-          command: npm build
+          command: npm run build
       - run:
           name: Test
-          command: npm test
+          command: npm run test
 
 workflows:
   version: 2
