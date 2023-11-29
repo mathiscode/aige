@@ -3,6 +3,7 @@
 import { program } from 'commander'
 import { checkbox, input, select } from '@inquirer/prompts'
 import chalk from 'chalk'
+import path from 'path'
 import fs from 'fs'
 
 import { Game } from './'
@@ -14,7 +15,7 @@ let chatMode: boolean | string = false
 
 let pkg = { version: '?.?.?', description: 'AI Game Engine' }
 try {
-  pkg = JSON.parse(fs.readFileSync('pkg.json').toString())
+  pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'pkg.json')).toString())
 } catch (err) {}
 
 program
