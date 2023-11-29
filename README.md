@@ -21,7 +21,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 
 [![Version](https://img.shields.io/github/package-json/v/mathiscode/aige?color=success)](https://www.npmjs.com/package/aige)
 [![CircleCI](https://img.shields.io/circleci/build/github/mathiscode/aige/master)](https://app.circleci.com/pipelines/github/mathiscode/aige)
-[![Last Commit](https://img.shields.io/github/last-commit/mathsicode/aige.svg)](https://github.com/mathiscode/aige/commit/master)
+[![Last Commit](https://img.shields.io/github/last-commit/mathiscode/aige.svg)](https://github.com/mathiscode/aige/commit/master)
 [![Open issues](https://img.shields.io/github/issues/mathiscode/aige.svg)](https://github.com/mathiscode/aige/issues)
 [![Closed issues](https://img.shields.io/github/issues-closed/mathiscode/aige.svg)](https://github.com/mathiscode/aige/issues?q=is%3Aissue+is%3Aclosed)
 
