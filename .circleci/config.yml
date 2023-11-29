@@ -10,7 +10,7 @@ jobs:
           command: npm install
       - run:
           name: Build
-          command: npm run build
+          command: npm run build:library
       - run:
           name: Test
           command: npm run test
