@@ -115,6 +115,7 @@ const main = async () => {
         console.log(`🛡️\tArmor: ${game.data.armor}%`)
         console.log(`💰\tMoney: ${game.data.money} ${game.data.money_name}`)
         console.log(`👍\tReputation: ${game.data.reputation} (${game.data.reputation_description})`)
+        console.log(`🪞\tAppearance: ${game.data.appearance}`)
         console.log(`🏋️\tWeight Carried: ${game.overburdened ? chalk.red(game.weightCarried) : chalk.green(game.weightCarried)} / ${game.data.weight_capacity} ${game.data.weight_unit}`)
         console.log(`🎒\tInventory: ${game.data.inventory?.map(item => item.name).join(', ')}`)
         console.log('👥\tCharacters: ' + game.data.characters?.map(character => character.name).join(', '))
