@@ -14,7 +14,7 @@ let chatMode: boolean | string = false
 
 let pkg = { version: '?.?.?', description: 'AI Game Engine' }
 try {
-  pkg = JSON.parse(fs.readFileSync('package.json').toString())
+  pkg = JSON.parse(fs.readFileSync('pkg.json').toString())
 } catch (err) {}
 
 program

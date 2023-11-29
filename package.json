@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "npm-run-all build:library build:docs",
-    "build:library": "tsc && shx cp package.json dist",
+    "build:library": "tsc && shx cp package.json dist/pkg.json",
     "build:docs": "typedoc",
     "build:docs:watch": "typedoc --watch",
     "test": "jest --verbose",
