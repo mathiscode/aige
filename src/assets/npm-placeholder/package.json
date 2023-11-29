@@ -1,6 +1,6 @@
 {
-  "name": "aige",
-  "version": "0.1.0",
+  "name": "@mathiscode/aige",
+  "version": "0.1.9",
   "description": "AI Game Engine",
   "homepage": "https://aige.games",
   "license": "MIT",

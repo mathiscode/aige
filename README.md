@@ -51,7 +51,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 
 ---
 
-[![asciicast](https://asciinema.org/a/623977.svg)](https://asciinema.org/a/623977)
+[![asciicast](https://asciinema.org/a/gGtxwT35JjXwR6qv7yMmB7K53.svg)](https://asciinema.org/a/gGtxwT35JjXwR6qv7yMmB7K53)
 
 ---
 
@@ -142,13 +142,13 @@ game2.on(GameEvent.loss, ({ attribute, amount }) => console.log(`Lost ${amount} 
 game3.on(GameEvent.chat, ({ character, dialog }) => console.log(`${character.name}: ${dialog}`))
 
 // Chat with a character:
-const character = game3.data.characters[Math.floor(Math.random() * game3.data.characters.length)]
-await game3.chat(character, 'Stop doing crime!')
+await game3.chat(game3.data.characters[0], 'Stop doing crime!')
 
 // Generate images:
-const item = game3.data.inventory[Math.floor(Math.random() * game3.data.inventory.length)]
-const ability = game3.data.abilities[Math.floor(Math.random() * game3.data.abilities.length)]
+const item = game3.data.inventory[0]
+const ability = game3.data.abilities[0]
 
+// You can provide any combination of the following options to the images method:
 const images = await game3.images({
   player: true,
   scene: true, 
@@ -156,10 +156,15 @@ const images = await game3.images({
   ability,
   item
 }, {
+  user: 'user-id', // optional
+  size: '512x512' // 256x256 | 512x512 (default) | 1024x1024 | 1792x1024 | 1024x1792
+  style: 'vivid' // vivid (default) | natural
+  quality: 'hd' // hd (default) | standard
+  model: 'dall-e-2' // dall-e-2 (default) | dall-e-3
   response_format: 'url' // url (default) | b64_json
 })
 
-console.log(images) // { player: 'https://...', scene: 'https://...', character: 'https://...', ability: 'https://...', item: 'https://...' }
+console.log(images) // { player?: 'https://...', scene?: 'https://...', character?: 'https://...', ability?: 'https://...', item?: 'https://...' }
 
 // Save the game state to a JSON file
 fs.writeFileSync('./game1.json', JSON.stringify(game1.export(), null, 2))

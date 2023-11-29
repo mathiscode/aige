@@ -76,8 +76,10 @@ export default class Client {
 
   async image (prompt: string, options: GameClientImageOptions = {}) {
     const response = await this.client.images.generate({
+      user: options.user || `AIGE-${Math.random().toString(36).slice(2)}`,
       size: options.size as ImageGenerateParams['size']  || '512x512',
       style: options.style as ImageGenerateParams['style'] || 'vivid',
+      quality: options.quality as ImageGenerateParams['quality'] || 'hd',
       model: options.model || this.imageModel,
       response_format: options.response_format as ImageGenerateParams['response_format'] || 'url',
       prompt
