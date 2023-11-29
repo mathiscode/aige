@@ -417,7 +417,8 @@ const main = async () => {
 
     let command = await input({ message: '🎮' })
     if (['quit', 'exit', 'break'].includes(command)) break
-    if (command === '') command = 'action'
+    if (command === '' && game.data.actions) command = 'action'
+    if (command === '') continue
 
     try {
       const args = command.split(' ')
