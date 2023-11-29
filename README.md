@@ -205,4 +205,4 @@ Optimizations Coming:
 - Allow custom schemas to reduce token usage by pruning unused data, and allowing flexibility in game structure
 - Chunk the creation and action calls into smaller pieces to reduce token usage per call, giving faster responses
 
-The default models are `gpt-3.5-turbo-1106` and `dall-e-2`. You can change the models in the [GameClientOptions](https://aige.games/interfaces/GameClientOptions) to use other models. Creating a game and performing an action uses ~2000-3000 tokens.
+The default models are `gpt-3.5-turbo-1106` and `dall-e-2`. You can change the models in the [GameClientOptions](https://aige.games/interfaces/Core.GameClientOptions.html) to use other models. Creating a game and performing an action uses ~2000-3000 tokens.
