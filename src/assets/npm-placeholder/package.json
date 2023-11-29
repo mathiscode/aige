@@ -1,0 +1,37 @@
+{
+  "name": "aige",
+  "version": "0.1.0",
+  "description": "AI Game Engine",
+  "homepage": "https://aige.games",
+  "license": "MIT",
+  "author": "Jay Mathis <code@mathis.network>",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "aige",
+    "ai",
+    "game",
+    "engine",
+    "artificial intelligence",
+    "game engine",
+    "typescript",
+    "javascript",
+    "nodejs",
+    "node",
+    "js",
+    "ts",
+    "openai",
+    "gpt-api",
+    "openai-api",
+    "chatgpt",
+    "llm",
+    "machine learning",
+    "ml",
+    "gpt",
+    "gpt3",
+    "gpt4",
+    "gpt-3",
+    "gpt-4"
+  ]
+}

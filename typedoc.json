@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "AIGE",
+  "entryPoints": ["./src", "./src/tools"],
+  "out": "docs",
+  "commentStyle": "all",
+  "cleanOutputDir": true,
+  "hideGenerator": true,
+  "searchInComments": true,
+  "cname": "aige.games",
+  "navigationLinks": {
+    "Github": "https://github.com/mathiscode/aige"
+  }
+}

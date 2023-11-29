@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug AIGE Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v18.16.0/bin/node",
+      "runtimeArgs": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/jest/bin/jest",
+        "--runInBand",
+        "--verbose",
+        "--watchAll"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+
+    {
+      "name": "Debug AIGE CLI",
+      "type": "node",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v18.16.0/bin/npm",
+      "runtimeArgs": [
+        "run",
+        "dev:cli",
+        "--",
+        "--import",
+        "/tmp/aige/game.json"
+      ],
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+docs
+coverage
+.jest
+test
+assets
+.env
