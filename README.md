@@ -106,7 +106,7 @@ const game1 = new Game({ clientOptions: { apiKey: OPENAI_API_KEY } })
 
 // import a game from a JSON export
 const game2 = new Game({ clientOptions: { apiKey: OPENAI_API_KEY } })
-game2.import(fs.readFileSync('./game2.json', 'utf8'))
+game2.import(JSON.parse(fs.readFileSync('./game2.json', 'utf8')))
 
 // specify game options
 const game3 = new Game({

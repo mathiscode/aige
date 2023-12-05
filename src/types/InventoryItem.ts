@@ -1,4 +1,4 @@
-export default interface InventoryItem {
+export type InventoryItem = {
   emoji: string
   name: string
   description: string

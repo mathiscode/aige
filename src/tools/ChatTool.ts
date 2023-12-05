@@ -39,7 +39,7 @@ export const schema = {
             },
             reputation_delta: {
               type: 'number',
-              description: 'The reputation delta of the player (character reputation affects how great the player delta is)'
+              description: 'The reputation delta of the player (0 most of the time, negative if the player offends or attacks the character, positive if the player shows traits the character likes)'
             },
             inventory_added: InventoryItemSchema,
             inventory_removed: {

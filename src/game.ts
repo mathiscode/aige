@@ -4,13 +4,18 @@ import { ChatCompletionMessage, ChatCompletionUserMessageParam } from 'openai/re
 
 import { call, tools } from './tools'
 import Client from './client'
-import GameData from './types/GameData'
-import GameOptions from './types/GameOptions'
-import Quest from './types/Quest'
-import Chat from './types/Chat'
-import Character from './types/Character'
-import GameEvent from './types/GameEvent'
-import { Ability, GameClientImageOptions, InventoryItem } from './types'
+
+import {
+  Ability,
+  Chat,
+  Character,
+  GameClientImageOptions,
+  GameData,
+  GameEvent,
+  GameOptions,
+  InventoryItem,
+  Quest
+} from './types'
 
 /**
    * The main class of the library.

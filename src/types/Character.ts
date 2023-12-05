@@ -1,7 +1,7 @@
-import Ability from './Ability'
-import InventoryItem from './InventoryItem'
+import { Ability } from './Ability'
+import { InventoryItem } from './InventoryItem'
 
-export default interface Character {
+export type Character = {
   emoji: string
   name: string
   description: string

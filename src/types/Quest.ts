@@ -1,6 +1,6 @@
-import InventoryItem from './InventoryItem'
+import { InventoryItem } from './InventoryItem'
 
-export default interface Quest {
+export type Quest = {
   emoji: string
   name: string
   description: string

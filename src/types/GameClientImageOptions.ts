@@ -1,4 +1,4 @@
-export default interface GameClientImageOptions {
+export type GameClientImageOptions = {
   size?: string
   style?: string
   quality?: string

@@ -1,9 +1,9 @@
-import GameClientOptions from './GameClientOptions'
+import { GameClientOptions } from './GameClientOptions'
 
 /**
  * The options of a game
  */
-export default interface GameOptions {
+export type GameOptions = {
   [key: string]: any
   clientOptions?: GameClientOptions
   universe?: string

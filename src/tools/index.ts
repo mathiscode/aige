@@ -1,13 +1,13 @@
 import { ChatCompletionTool } from 'openai/resources'
 
-import { schema as CreateSchema, execute as CreateExecute } from './create'
-import { schema as ActionSchema, execute as ActionExecute } from './action'
-import { schema as NameSchema, execute as NameExecute } from './name'
-import { schema as ClassSchema, execute as ClassExecute } from './class'
-import { schema as InventorySchema, execute as InventoryExecute } from './inventory'
-import { schema as SummarizeSchema, execute as SummarizeExecute } from './summarize'
-import { schema as ChatSchema, execute as ChatExecute } from './chat'
-import { schema as ReputationSchema, execute as ReputationExecute } from './reputation'
+import { schema as CreateSchema, execute as CreateExecute } from './CreateTool'
+import { schema as UpdateSchema, execute as UpdateExecute } from './UpdateTool'
+import { schema as NameSchema, execute as NameExecute } from './NameTool'
+import { schema as ClassSchema, execute as ClassExecute } from './ClassTool'
+import { schema as ChatSchema, execute as ChatExecute } from './ChatTool'
+import { schema as ReputationSchema, execute as ReputationExecute } from './ReputationTool'
+import { schema as InventorySchema, execute as InventoryExecute } from './InventoryTool'
+import { schema as SummarizeSchema, execute as SummarizeExecute } from './SummarizeTool'
 
 import Client from '../client'
 
@@ -28,8 +28,8 @@ export const tools = {
     execute: CreateExecute
   } as Tool,
   action: {
-    schema: ActionSchema,
-    execute: ActionExecute
+    schema: UpdateSchema,
+    execute: UpdateExecute
   } as Tool,
   name: {
     schema: NameSchema,

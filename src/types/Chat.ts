@@ -1,6 +1,6 @@
-import ChatMessage from './ChatMessage'
+import { ChatMessage } from './ChatMessage'
 
-export default interface Chat {
+export type Chat = {
   character_name: string
   messages: [ChatMessage]
 }

@@ -7,9 +7,7 @@ import path from 'path'
 import fs from 'fs'
 
 import { Game } from './'
-import Chat from './types/Chat'
-import Character from './types/Character'
-import GameEvent from './types/GameEvent'
+import { Chat, Character, GameEvent } from './types'
 
 let chatMode: boolean | string = false
 
@@ -328,7 +326,7 @@ const main = async () => {
         })
 
         if (name === 'Cancel') return
-        console.log(chalk.yellow(`Talking to ${name}`))
+        console.log(chalk.yellow(`Talking to ${name}; enter an empty message to stop`))
         const character = game?.data.characters?.find(character => character.name === name)
         if (!character) return console.log(chalk.red('Invalid character'))
         await game?.chat({ character, dialog: '*start new conversation*' })

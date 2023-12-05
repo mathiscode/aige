@@ -1,4 +1,4 @@
-enum GameEvent {
+export enum GameEvent {
   gain = 'gain',
   loss = 'loss',
   chat = 'chat',
@@ -17,5 +17,3 @@ enum GameEvent {
   ability_removed = 'ability_removed',
   images_created = 'images_created'
 }
-
-export default GameEvent

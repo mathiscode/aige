@@ -1,13 +1,13 @@
-import Ability from './Ability'
-import Character from './Character'
-import Chat from './Chat'
-import InventoryItem from './InventoryItem'
-import Quest from './Quest'
+import { Ability } from './Ability'
+import { Character } from './Character'
+import { Chat } from './Chat'
+import { InventoryItem } from './InventoryItem'
+import { Quest } from './Quest'
 
 /**
  * The data of a game
  */
-export default interface GameData {
+export type GameData = {
   [key: string]: any
   health: number
   health_description: string
