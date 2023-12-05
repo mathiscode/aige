@@ -98,19 +98,25 @@ npm install @aige/core # or your package manager's equivalent (pnpm recommended)
 ```js
 import fs from 'node:fs'
 import { Game, GameEvent } from '@aige/core'
+
 const game = new Game({ clientOptions: { apiKey: 'sk-openaikey' } })
 await game.init()
 console.log(`${game.data.scene_emoji} ${game.scene}`)
+
 const action = game.data.actions[0]
 console.log(`Performing action: ${action}`)
 await game.action(action)
 console.log(`${game.data.scene_emoji} ${game.scene}`)
+
 await game.action('Attack the nearest enemy')
 console.log(game.inspect())
+
 game.on(GameEvent.chat, ({ character, dialog }) => console.log(`${character.name}: ${dialog}`))
 await game.chat(game.data.characters[0], 'Hello!')
+
 const images = await game.images({ player: true, scene: true })
 console.dir(images)
+
 fs.writeFileSync('./game.json', JSON.stringify(game.export()))
 ```
 
