@@ -61,7 +61,8 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
   - [CLI](#cli)
   - [Installation](#installation)
   - [Documentation](#documentation)
-  - [Example](#example)
+  - [Simple Example](#simple-example)
+  - [Full Example](#full-example)
   - [Development](#development)
   - [Notes](#notes)
 
@@ -92,7 +93,28 @@ npm install @aige/core # or your package manager's equivalent (pnpm recommended)
 
 [View the docs on aige.games](https://aige.games)
 
-## Example
+## Simple Example
+
+```js
+import fs from 'node:fs'
+import { Game, GameEvent } from '@aige/core'
+const game = new Game({ clientOptions: { apiKey: 'sk-openaikey' } })
+await game.init()
+console.log(`${game.data.scene_emoji} ${game.scene}`)
+const action = game.data.actions[0]
+console.log(`Performing action: ${action}`)
+await game.action(action)
+console.log(`${game.data.scene_emoji} ${game.scene}`)
+await game.action('Attack the nearest enemy')
+console.log(game.inspect())
+game.on(GameEvent.chat, ({ character, dialog }) => console.log(`${character.name}: ${dialog}`))
+await game.chat(game.data.characters[0], 'Hello!')
+const images = await game.images({ player: true, scene: true })
+console.dir(images)
+fs.writeFileSync('./game.json', JSON.stringify(game.export()))
+```
+
+## Full Example
 
 ```js
 import fs from 'node:fs'
@@ -106,7 +128,7 @@ const game1 = new Game({ clientOptions: { apiKey: OPENAI_API_KEY } })
 
 // import a game from a JSON export
 const game2 = new Game({ clientOptions: { apiKey: OPENAI_API_KEY } })
-game2.import(JSON.parse(fs.readFileSync('./game2.json', 'utf8')))
+game2.import(JSON.parse(fs.readFileSync('./game.json', 'utf8')))
 
 // specify game options
 const game3 = new Game({
@@ -116,7 +138,12 @@ const game3 = new Game({
   playerClass: 'Primarch'
 })
 
-// This is only necessary for new games, not imported games
+// change the way the game is created (can also be specified in Game constructor)
+game1.options.prompts.create = 'Create game but all text in every argument should be uppercase'
+game1.options.prompts.name = 'Get the player name but make it hard to pronounce'
+game1.options.prompts.class = 'Get the player class but make it all numbers'
+
+// Initializing is only necessary for new games, not imported games
 await game1.init()
 await game3.init()
 
@@ -176,8 +203,6 @@ See [tests](./test) and [cli.ts](./src/cli.ts) for more examples on how to inter
 
 ## Development
 
-There is a `launch.json` file included for debugging in VSCode.
-
 Run the following commands:
 
 ```sh
@@ -201,13 +226,15 @@ pnpm build:docs:watch # build the docs and watch for changes
 pnpm dev:cli # run the CLI with the Node.js debugger attached
 ```
 
+There is a `launch.json` file included for debugging in VSCode.
+
 ## Notes
 
-OpenAI's API can sometimes be slow to respond with larger schemas, and the `create` and `action` tools have fairly heavy schemas. As time goes on, both OpenAI and AIGE will improve and become faster.
+OpenAI's API can sometimes be slow to respond with larger schemas, and the `create` and `update` tools have fairly heavy schemas. As time goes on, both OpenAI and AIGE will improve and become faster.
 
 Optimizations Coming:
 
 - Allow custom schemas to reduce token usage by pruning unused data, and allowing flexibility in game structure
 - Chunk the creation and action calls into smaller pieces to reduce token usage per call, giving faster responses
 
-The default models are `gpt-3.5-turbo-1106` and `dall-e-2`. You can change the models in the [GameClientOptions](https://aige.games/interfaces/Core.GameClientOptions.html) to use other models. Creating a game and performing an action uses ~2000-3000 tokens.
+The default models are `gpt-3.5-turbo-1106` and `dall-e-2`. You can set the models in the [GameClientOptions](https://aige.games/interfaces/Core.GameClientOptions.html) to use others. Creating a game and performing an action uses ~2000-3000 tokens.

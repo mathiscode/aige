@@ -95,8 +95,8 @@ export default class Game {
     }
 
     // TODO: Use OpenAI's ability to combine function calls
-    if (!this.options.playerName) this.options.playerName = await call(this.client, tools.name)({ messages: [{ role: 'user', content: `Get name; universe: ${this.options.universe}, language: ${this.options.language}` }] })
-    if (!this.options.playerClass) this.options.playerClass = await call(this.client, tools.class)({ messages: [{ role: 'user', content: `Get class; universe: ${this.options.universe}, player: ${this.options.playerName}, language: ${this.options.language}` }] })
+    if (!this.options.playerName) this.options.playerName = await call(this.client, tools.name)({ messages: [{ role: 'user', content: `${this.options.prompts?.name}; universe: ${this.options.universe}, language: ${this.options.language}` }] })
+    if (!this.options.playerClass) this.options.playerClass = await call(this.client, tools.class)({ messages: [{ role: 'user', content: `${this.options.prompts?.class}; universe: ${this.options.universe}, player: ${this.options.playerName}, language: ${this.options.language}` }] })
 
     const data = await call(this.client, tools.create)({
       messages: [
