@@ -207,7 +207,7 @@ fs.writeFileSync('./game2.json', JSON.stringify(game2.export(), null, 2))
 fs.writeFileSync('./game3.json', JSON.stringify(game3.export(), null, 2))
 ```
 
-See [tests](./test) and [cli.ts](./src/cli.ts) for more examples on how to interface with the library.
+See [tests](https://github.com/mathiscode/aige/tree/master/test) and [cli.ts](https://github.com/mathiscode/aige/tree/master/src/cli.ts) for more examples on how to use the library.
 
 ## Development
 
