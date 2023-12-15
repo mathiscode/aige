@@ -27,7 +27,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 
 [![Sponsors](https://img.shields.io/github/sponsors/mathiscode?color=red)](https://github.com/sponsors/mathiscode)
 [![Contributors](https://img.shields.io/github/contributors/mathiscode/aige?color=yellow)](https://github.com/mathiscode/aige/graphs/contributors)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/mathiscode/aige/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/mathiscode/aige/blob/master/LICENSE.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-blue.svg)](https://github.com/mathiscode/aige/compare)
 
 [![Followers](https://img.shields.io/github/followers/mathiscode?style=social)](https://github.com/mathiscode)
@@ -197,7 +197,9 @@ const images = await game3.images({
   response_format: 'url' // url (default) | b64_json
 })
 
-console.log(images) // { player?: 'https://...', scene?: 'https://...', character?: 'https://...', ability?: 'https://...', item?: 'https://...' }
+console.log(images)
+// { player?: 'https://...', scene?: 'https://...',
+// character?: 'https://...', ability?: 'https://...', item?: 'https://...' }
 
 // Save the game state to a JSON file
 fs.writeFileSync('./game1.json', JSON.stringify(game1.export(), null, 2))

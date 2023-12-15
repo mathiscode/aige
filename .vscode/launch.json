@@ -26,10 +26,23 @@
       "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v18.16.0/bin/npm",
       "runtimeArgs": [
         "run",
+        "dev:cli"
+      ],
+    },
+
+    {
+      "name": "Debug AIGE CLI (saved game)",
+      "type": "node",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v18.16.0/bin/npm",
+      "runtimeArgs": [
+        "run",
         "dev:cli",
         "--",
         "--import",
-        "/tmp/aige/game.json"
+        "/var/tmp/aige/game.json"
       ],
     }
   ]
