@@ -177,7 +177,7 @@ const main = async () => {
     },
     {
       name: 'inspect',
-      description: 'Inspect the current game (or a specific top-level key)',
+      description: 'Inspect the current game (or a specific key/path)',
       execute: (args: string[]) => {
         const key = args?.[1]
 
