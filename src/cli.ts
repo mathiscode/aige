@@ -2,6 +2,7 @@
 
 import { program } from 'commander'
 import { checkbox, input, select } from '@inquirer/prompts'
+import { emojify } from '@twuni/emojify'
 import chalk from 'chalk'
 import path from 'path'
 import fs from 'fs'
@@ -47,7 +48,7 @@ const setupEventListeners = (game: Game) => {
 
   const chatHandler = ({ chat, character, dialog }: { chat: Chat, character: Character, dialog: string, game: Game }) => {
     if (!chat || !character || !dialog || dialog === '') return
-    console.log(`${character.emoji || ''}   ${chalk.green(character.name)}: ${chalk.yellow(dialog)}`)
+    console.log(`${emojify(character.emoji || '')}   ${chalk.green(character.name)}: ${chalk.yellow(dialog)}`)
     chatMode = character.name
   }
 
@@ -99,7 +100,7 @@ const main = async () => {
         console.log('Quests: ' + game?.data.quests?.map(quest => quest.name).join(', '))
         console.log('Abilities: ' + game?.data.abilities?.map(ability => ability.name).join(', '))
 
-        console.log(`\n${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`\n${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`\n${chalk.yellow(`Suggested actions: ${game?.data.actions?.join(', ')}`)}`)
       }
     },
@@ -237,7 +238,7 @@ const main = async () => {
         if (action === 'Other') action = await input({ message: 'Action:' })
 
         await game?.action(action)
-        console.log(`\n${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`\n${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`\n${chalk.green(`Suggested actions: ${chalk.yellow(game?.data.actions?.join(', '))}`)}`)
       }
     },
@@ -256,7 +257,7 @@ const main = async () => {
       name: 'scene',
       description: 'Display the current scene',
       execute: () => {
-        console.log(`${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`Location: ${game?.data.location} (${game?.data.location_description})`)
         console.log(`Weather: ${game?.data.weather} (${game?.data.weather_description})`)
       }
@@ -268,7 +269,7 @@ const main = async () => {
         const item = await select({
           message: 'Item:',
           choices: game?.data.inventory?.map(item => {
-            const title = `${item.emoji || ''} ${item.name} (${item.type})`
+            const title = `${emojify(item.emoji || '')} ${item.name} (${item.type})`
             const value = item.name
             const description = `${item.description} (${item.value} ${game?.data.money_name}, ${item.weight} ${game?.data.weight_unit})`
             return { title, value, description }
@@ -278,7 +279,7 @@ const main = async () => {
         if (item === 'Cancel') return
         console.log(chalk.yellow(`Using ${item}`))
         await game?.action(`Use ${item}`)
-        console.log(`\n${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`\n${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`\n${chalk.yellow(`Suggested actions: ${game?.data.actions?.join(', ')}`)}`)
       }
     },
@@ -289,7 +290,7 @@ const main = async () => {
         const quests = game?.data.quests?.map(quest => {
           const title = quest.name
           const value = quest.name
-          const description = `${quest.emoji || ''}   ${quest.description}`
+          const description = `${emojify(quest.emoji || '')}   ${quest.description}`
           return { title, value, description }
         }) || []
 
@@ -303,7 +304,7 @@ const main = async () => {
         if (quest === 'Cancel') return
         console.log(chalk.yellow(`Continuing quest ${quest}`))
         await game?.action(`${game.options.prompts?.quest}: ${quest}`)
-        console.log(`\n${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`\n${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`\n${chalk.yellow(`Suggested actions: ${game?.data.actions?.join(', ')}`)}`)
       }
     },
@@ -314,7 +315,7 @@ const main = async () => {
         const characters = game?.data.characters?.map(character => {
           const title = character.name
           const value = character.name
-          const description = `${character.emoji || ''}   ${character.description}`
+          const description = `${emojify(character.emoji || '')}   ${character.description}`
           return { title, value, description }
         }) || []
 
@@ -340,7 +341,7 @@ const main = async () => {
         const abilities = game?.data.abilities?.map(ability => {
           const title = ability.name
           const value = ability.name
-          const description = `${ability.emoji || ''}   ${ability.description}`
+          const description = `${emojify(ability.emoji || '')}   ${ability.description}`
           return { title, value, description }
         }) || []
 
@@ -354,7 +355,7 @@ const main = async () => {
         if (ability === 'Cancel') return
         console.log(chalk.yellow(`Using ability ${ability}`))
         await game?.action(`Use ability: ${ability}`)
-        console.log(`\n${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`\n${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`\n${chalk.yellow(`Suggested actions: ${game?.data.actions?.join(', ')}`)}`)
       }
     },
@@ -381,7 +382,7 @@ const main = async () => {
         console.log(chalk.green(`Game ${game.id} imported`))
         console.log(chalk.green(`\n${game?.options.universe}`))
         console.log(`${chalk.green(`${game?.options.playerName}, ${game?.options.playerClass}`)}`)
-        console.log(`${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+        console.log(`${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
         console.log(`\n${chalk.yellow(`Suggested actions: ${game?.data.actions?.join(', ')}`)}`)
       }
     }
@@ -396,7 +397,7 @@ const main = async () => {
     console.log(chalk.green(`Game ${game.id} imported`))
     console.log(chalk.green(`\n${game?.options.universe}`))
     console.log(`${chalk.green(`${game?.options.playerName}, ${game?.options.playerClass}`)}`)
-    console.log(`${game?.data.scene_emoji || ''}\t${chalk.blue(game?.data.scene)}`)
+    console.log(`${emojify(game?.data.scene_emoji || '')}\t${chalk.blue(game?.data.scene)}`)
     console.log(`\n${chalk.yellow(`Suggested actions: ${game?.data.actions?.join(', ')}`)}`)
   }
 

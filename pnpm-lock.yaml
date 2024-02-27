@@ -8,6 +8,9 @@ dependencies:
   '@inquirer/prompts':
     specifier: ^3.3.0
     version: 3.3.0
+  '@twuni/emojify':
+    specifier: ^1.0.2
+    version: 1.0.2
   chalk:
     specifier: ^4.1.2
     version: 4.1.2
@@ -40,6 +43,9 @@ devDependencies:
   '@types/terminal-kit':
     specifier: ^2.5.6
     version: 2.5.6
+  '@types/twuni__emojify':
+    specifier: ^1.0.2
+    version: 1.0.2
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.50.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.54.0)(typescript@5.3.2)
@@ -954,6 +960,10 @@ packages:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
 
+  /@twuni/emojify@1.0.2:
+    resolution: {integrity: sha512-glI5e+K7HFdJ7ntwdDsVW3hneMxt2+FoTisphorL+3SXpYvRQ0CV2wIMsdzAp+SotBK6ONkRLTiGy+8SN86eHg==}
+    dev: false
+
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
     dependencies:
@@ -1143,6 +1153,10 @@ packages:
     resolution: {integrity: sha512-S5kRC7wzduRj/Wrc8BCRPfQBSWi3bj3CCUBIkmrzBzrc0sjgxPqYZPvdDxhuBGCsOPZFJiDSrzUa9mYXVOOm4g==}
     dependencies:
       '@types/nextgen-events': 1.1.4
+    dev: true
+
+  /@types/twuni__emojify@1.0.2:
+    resolution: {integrity: sha512-1EQiHkrvs5nQe+dKcTGUb0EpVA+8gGdpqX6McYhsdVJKXp2/LEmsTSHP8nT331qJ/kmvbIlAVapMj1rTH2xDNg==}
     dev: true
 
   /@types/wrap-ansi@3.0.0:

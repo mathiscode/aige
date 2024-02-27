@@ -3,7 +3,13 @@ import OpenAI from 'openai'
 import Game from './game'
 import { Tool } from './tools'
 import { GameClientOptions, GameClientImageOptions } from './types'
-import { ImageGenerateParams } from 'openai/resources'
+import { ChatCompletionCreateParams, ChatCompletionToolChoiceOption, ImageGenerateParams } from 'openai/resources'
+
+export type CallParameters = {
+  messages?: ChatCompletionCreateParams['messages']
+  tool_choice?: ChatCompletionToolChoiceOption
+  debug?: boolean
+}
 
 export default class Client {
   client: OpenAI
@@ -17,7 +23,7 @@ export default class Client {
     const defaultClientOptions = {
       clientOptions: {
         apiKey: process.env['OPENAI_API_KEY'],
-        timeout: 30000,
+        timeout: process.env['OPENAI_API_TIMEOUT'] || 30000,
         maxRetries: 0
       }
     }
@@ -25,13 +31,13 @@ export default class Client {
     options.clientOptions = options.clientOptions || {}
 
     this.client = new OpenAI({ ...defaultClientOptions, ...options.clientOptions })
-    this.model = options.model || 'gpt-3.5-turbo-1106'
+    this.model = options.model || process.env['OPENAI_MODEL'] || 'gpt-3.5-turbo-0125'
     this.imageModel = options.imageModel || 'dall-e-2'
     this.contextWindow = options.contextWindow || 16385
     this.game = game
   }
 
-  async call (tool: Tool | Tool[], parameters: any) {
+  async call (tool: Tool | Tool[], parameters: CallParameters) {
     const tools = []
     if (Array.isArray(tool)) {
       for (const t of tool) tools.push(t.schema)
