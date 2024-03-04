@@ -14,7 +14,7 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 
 ---
 
-[![NPM](https://nodei.co/npm/@aige/core.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/@aige/core)
+[![NPM](https://img.shields.io/npm/v/%40aige%2Fcore?color=blue)](https://www.npmjs.com/package/@aige/core)
 
 [![View Docs](https://img.shields.io/badge/view-docs-blue?style=for-the-badge)](https://aige.games)
 [![Made with TypeScript](https://img.shields.io/badge/made_with-typescript-blue?style=for-the-badge)](https://www.typescriptlang.org)
