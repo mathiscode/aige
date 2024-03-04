@@ -15,7 +15,6 @@
     "url": "https://github.com/mathiscode/aige/issues"
   },
   "main": "dist/index.js",
-  "exports": "./dist/index.js",
   "files": [
     "dist"
   ],
