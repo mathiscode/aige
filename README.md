@@ -6,7 +6,7 @@ AIGE is a Node.js library that utilizes the OpenAI API to generate text-based ga
 
 Developers can integrate AIGE into their own projects to create games that are unique every time.
 
-AI-based games can go off the rails sometimes, but that's part of the fun!
+AI-based games can go off the rails and not make sense sometimes, but that's part of the fun!
 
 Made with ❤️ by [Jay Mathis](https://github.com/mathiscode)
 
@@ -14,11 +14,10 @@ Please consider [becoming a sponsor](https://github.com/sponsors/mathiscode) or 
 
 ---
 
-[![NPM](https://img.shields.io/npm/dw/%40aige%2Fcore)](https://www.npmjs.com/package/@aige/core)
-
 [![View Docs](https://img.shields.io/badge/view-docs-blue?style=for-the-badge)](https://aige.games)
 [![Made with TypeScript](https://img.shields.io/badge/made_with-typescript-blue?style=for-the-badge)](https://www.typescriptlang.org)
 
+[![NPM](https://img.shields.io/npm/dw/%40aige%2Fcore)](https://www.npmjs.com/package/@aige/core)
 [![Version](https://img.shields.io/github/package-json/v/mathiscode/aige?color=success)](https://www.npmjs.com/package/@aige/core)
 [![CircleCI](https://img.shields.io/circleci/build/github/mathiscode/aige/master)](https://app.circleci.com/pipelines/github/mathiscode/aige)
 [![Last Commit](https://img.shields.io/github/last-commit/mathiscode/aige.svg)](https://github.com/mathiscode/aige/commit/master)
