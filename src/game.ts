@@ -1,6 +1,6 @@
 import EventEmitter from 'events'
 import { randomUUID } from 'crypto'
-import { ChatCompletionMessage, ChatCompletionUserMessageParam } from 'openai/resources'
+import { ChatCompletionMessage, ChatCompletionUserMessageParam, Image } from 'openai/resources'
 
 import { call, tools } from './tools'
 import Client from './client'
@@ -415,10 +415,36 @@ export default class Game {
    * Call game.client.image to manually use any prompt
    */
   async images (
-    { scene, player, character, item, ability }: { scene?: boolean, player?: boolean, character?: Character, item?: InventoryItem, ability?: Ability } = {},
-    imageOptions?: GameClientImageOptions
+    { cover, scene, player, character, item, ability }:
+    { cover?: boolean, scene?: boolean, player?: boolean, character?: Character, item?: InventoryItem, ability?: Ability } = {},
+    imageOptions?: {
+      cover?: GameClientImageOptions,
+      scene?: GameClientImageOptions,
+      player?: GameClientImageOptions,
+      character?: GameClientImageOptions,
+      item?: GameClientImageOptions,
+      ability?: GameClientImageOptions
+    }
   ) {
-    const results: any = {}
+    // TODO: Parallelize these calls
+    const results: {
+      cover?: Image,
+      scene?: Image,
+      player?: Image,
+      character?: Image,
+      item?: Image,
+      ability?: Image
+    } = {}
+
+    if (cover) {
+      const prompt = `
+        A highly detailed landscape cover photo of ${this.options.playerName},
+        a ${this.options.playerClass} in the ${this.options.universe} universe.
+        Drawn in the style of ${this.options.universe} if possible.
+      `
+
+      results.cover = await this.client.image(prompt, imageOptions?.cover)
+    }
 
     if (scene) {
       const prompt = `
@@ -429,7 +455,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.scene = await this.client.image(prompt, imageOptions)
+      results.scene = await this.client.image(prompt, imageOptions?.scene)
     }
 
     if (player) {
@@ -443,7 +469,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.player = await this.client.image(prompt, imageOptions)
+      results.player = await this.client.image(prompt, imageOptions?.player)
     }
 
     if (character) {
@@ -456,7 +482,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.character = await this.client.image(prompt, imageOptions)
+      results.character = await this.client.image(prompt, imageOptions?.character)
     }
 
     if (item) {
@@ -466,7 +492,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.item = await this.client.image(prompt, imageOptions)
+      results.item = await this.client.image(prompt, imageOptions?.item)
     }
 
     if (ability) {
@@ -475,7 +501,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.ability = await this.client.image(prompt, imageOptions)
+      results.ability = await this.client.image(prompt, imageOptions?.ability)
     }
 
     this.events.emit(GameEvent.images_created, { images: results, game: this })

@@ -128,12 +128,18 @@ const main = async () => {
       execute: async () => {
         const types = await checkbox({
           message: 'Types:',
-          choices: ['player', 'scene', 'character', 'item', 'ability'].map(type => ({ title: type, value: type }))
+          choices: ['cover', 'player', 'scene', 'character', 'item', 'ability'].map(type => ({ title: type, value: type }))
         })
 
         const args: any = {}
+        let imageOptions: any = {}
+
         for (const type of types) {
           switch (type) {
+            case 'cover':
+              args.cover = true
+              imageOptions.cover = { model: 'dall-e-3', quality: 'hd', size: '1792x1024' }
+              break
             case 'player':
               args.player = true
               break
@@ -168,7 +174,7 @@ const main = async () => {
         }
 
         if (Object.keys(args).length > 0) {
-          const results = await game?.images(args)
+          const results = await game?.images(args, imageOptions)
           console.log(chalk.green(`Generated ${Object.keys(results).length} images`))
           for (const [key, value] of Object.entries(results)) {
             console.log(`${chalk.yellow(key)}: ${chalk.blue((value as any).url)}`)
