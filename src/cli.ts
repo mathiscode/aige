@@ -152,7 +152,7 @@ const main = async () => {
                 choices: game?.data.characters?.map(character => ({ title: character.name, value: character.name })) || []
               })
 
-              if (character) args.character = character
+              if (character) args.character = game?.data.characters?.find(char => char.name === character)
               break
             case 'item':
               const item = await select({

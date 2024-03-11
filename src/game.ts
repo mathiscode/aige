@@ -426,7 +426,7 @@ export default class Game {
       ability?: GameClientImageOptions
     }
   ) {
-    // TODO: Parallelize these calls
+    const tasks = []
     const results: {
       cover?: Image,
       scene?: Image,
@@ -443,7 +443,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe} if possible.
       `
 
-      results.cover = await this.client.image(prompt, imageOptions?.cover)
+      tasks.push(this.client.image(prompt, imageOptions?.cover))
     }
 
     if (scene) {
@@ -455,7 +455,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.scene = await this.client.image(prompt, imageOptions?.scene)
+      tasks.push(this.client.image(prompt, imageOptions?.scene))
     }
 
     if (player) {
@@ -469,7 +469,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.player = await this.client.image(prompt, imageOptions?.player)
+      tasks.push(this.client.image(prompt, imageOptions?.player))
     }
 
     if (character) {
@@ -482,7 +482,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.character = await this.client.image(prompt, imageOptions?.character)
+      tasks.push(this.client.image(prompt, imageOptions?.character))
     }
 
     if (item) {
@@ -492,7 +492,7 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.item = await this.client.image(prompt, imageOptions?.item)
+      tasks.push(this.client.image(prompt, imageOptions?.item))
     }
 
     if (ability) {
@@ -501,8 +501,16 @@ export default class Game {
         Drawn in the style of ${this.options.universe}
       `
 
-      results.ability = await this.client.image(prompt, imageOptions?.ability)
+      tasks.push(this.client.image(prompt, imageOptions?.ability))
     }
+
+    const images = await Promise.all(tasks)
+    if (cover) results.cover = images.shift()
+    if (scene) results.scene = images.shift()
+    if (player) results.player = images.shift()
+    if (character) results.character = images.shift()
+    if (item) results.item = images.shift()
+    if (ability) results.ability = images.shift()
 
     this.events.emit(GameEvent.images_created, { images: results, game: this })
     return results
