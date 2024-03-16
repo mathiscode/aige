@@ -13,11 +13,12 @@ export type CallParameters = {
 
 export default class Client {
   client: OpenAI
+  game: Game
   model: string
   imageModel: string
   contextWindow: number
-  game: Game
   tokens: number = 0
+  limit: number = Infinity
 
   constructor(options: GameClientOptions = {}, game: Game) {
     const defaultClientOptions = {
@@ -34,10 +35,13 @@ export default class Client {
     this.model = options.model || process.env['OPENAI_MODEL'] || 'gpt-3.5-turbo-0125'
     this.imageModel = options.imageModel || 'dall-e-2'
     this.contextWindow = options.contextWindow || 16385
+    this.limit = options.limit || Infinity
     this.game = game
   }
 
   async call (tool: Tool | Tool[], parameters: CallParameters) {
+    if (this.tokens >= this.limit) throw new Error('ETOKENLIMIT: Exceeded token limit')
+
     const tools = []
     if (Array.isArray(tool)) {
       for (const t of tool) tools.push(t.schema)

@@ -5,4 +5,5 @@ export type GameClientOptions = {
   model?: string
   imageModel?: string
   contextWindow?: number
+  limit?: number
 }

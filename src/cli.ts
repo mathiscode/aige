@@ -81,12 +81,14 @@ const main = async () => {
         let universe: string | undefined = await input({ message: 'Universe:', default: 'random' })
         let playerName: string | undefined = await input({ message: 'Name:', default: 'random' })
         let playerClass: string | undefined = await input({ message: 'Class:', default: 'random' })
+        let tokenLimit: string | undefined = await input({ message: 'Token Limit:', default: 'None' })
 
         if (universe === 'random') universe = undefined
         if (playerName === 'random') playerName = undefined
         if (playerClass === 'random') playerClass = undefined
+        if (tokenLimit === 'None') tokenLimit = undefined
 
-        game = new Game({ language, universe, playerName, playerClass })
+        game = new Game({ language, universe, playerName, playerClass, clientOptions: { limit: tokenLimit ? parseInt(tokenLimit) : Infinity } })
         setupEventListeners(game)
         console.log(chalk.green(`Creating game ${game.id}`))
         await game.init()
@@ -424,7 +426,7 @@ const main = async () => {
     let command = await input({ message: '🎮' })
     if (['quit', 'exit', 'break'].includes(command)) break
     if (command === '' && game.data.actions) command = 'action'
-    if (command === '') continue
+    if (command === '' && !game.data.actions) command = 'create'
 
     try {
       const args = command.split(' ')
